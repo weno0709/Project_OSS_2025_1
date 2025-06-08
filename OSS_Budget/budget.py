@@ -10,7 +10,16 @@ class Budget:
         today = datetime.date.today().isoformat()
         goal = Goal(today, content)
         self.goals.append(goal)
-        print("오늘의 목표가 추가되었습니다.\n")
+        print("목표가 추가되었습니다.\n")
+
+    def list_goals(self):
+        if not self.goals:
+            print("목표가 설정되지 않았습니다...\n")
+            return
+        print("\n[나의 목표 목록]")
+        for idx, goal in enumerate(self.goals, 1):
+            print(f"{idx}. {goal}")
+        print()
 
     def add_expense(self, category, description, amount):
         today = datetime.date.today().isoformat()
