@@ -1,10 +1,14 @@
 import datetime
 from expense import Expense
+from goal import Goal
+from savings import Savings
+
 
 class Budget:
     def __init__(self):
         self.expenses = []
 	self.goals=[]
+     	self.savings = []
 
     def add_goal(self, content):
         today = datetime.date.today().isoformat()
@@ -40,4 +44,23 @@ class Budget:
         total = sum(e.amount for e in self.expenses)
         print(f"총 지출: {total}원\n")
 
+    def add_saving(self, category, description, amount):
+        today = datetime.date.today().isoformat()
+        saving = Saving(today, category, description, amount)
+        self.saving.append(saving)
+        print("저축이 추가되었습니다.\n")
+    
+    def list_saving(self):
+        """저축 목록 보기"""
+        if not self.saving:
+            print("저축 내역이 없습니다.\n")
+            return
+        print("\n[저축 목록]")
+        for idx, s in enumerate(self.saving, 1):
+            print(f"{idx}. {s}")
+        print()
 
+    def total_saving(self):
+        total = sum(s.amount for s in self.saving)
+        print(f"총 저축: {total}원\n")
+        return total
