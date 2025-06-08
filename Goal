@@ -1,0 +1,9 @@
+class Goal:
+    def __init__(self, date, content):
+        self.date = date
+        self.content = content
+
+    def __str__(self):
+        state = "/" if self.completed else "○"
+        return f"[{self.date}] {state} {self.content}"
+    
