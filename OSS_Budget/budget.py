@@ -4,6 +4,13 @@ from expense import Expense
 class Budget:
     def __init__(self):
         self.expenses = []
+	self.goals=[]
+
+    def add_goal(self, content):
+        today = datetime.date.today().isoformat()
+        goal = Goal(today, content)
+        self.goals.append(goal)
+        print("오늘의 목표가 추가되었습니다.\n")
 
     def add_expense(self, category, description, amount):
         today = datetime.date.today().isoformat()
